@@ -41,20 +41,13 @@ listaProdutos.appendChild(novoProduto);
     let preco = quantidade * valorUnitario;
     totalgeral = totalgeral + preco;
     let campoTotal = document.getElementById('valor-total');
-    campoTotal.textContent = `R$ ${totalgeral}`;
+    campoTotal.textContent = `R$ ${totalgeral.toLocaleString('pt-BR',{ minimumFractionDigits: 2})}`;
     document.getElementById('quantidade').value = '';
     quantidade.focus();
-
-
-    
+  
     
 
 }
-
-
-
-
-
 
 function limpar() {
     // limpar a lista aode produtos no carrinho
@@ -64,18 +57,27 @@ function limpar() {
     //Reiniciar o valor total do carrinho
     totalgeral = 0;
 
+
    
     let valorTotalElemento = document.getElementById('valor-total');
     valorTotalElemento.textContent = 'R$0.00';
+
+    let produtoSelect = document.getElementById('produto');
+    produtoSelect.selectedIndex = 0;
+    produtoSelect.disabled = true;
 
     //Limpar o campo quantidade
 
     let quantidade = document.getElementById('quantidade');
     quantidade.value =''; // Define o valor como uma String vazia
 
+   
+
     // Retornar o foco para o campo quantidade
     quantidade.focus()
 
-
+    setTimeout(() => {
+        produtoSelect.disabled = false;
+    }, 100);
     
 }
