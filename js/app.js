@@ -50,7 +50,7 @@ listaProdutos.appendChild(novoProduto);
 }
 
 function limpar() {
-    // limpar a lista aode produtos no carrinho
+    // limpar a lista  produtos no carrinho
     let listaProdutos = document.getElementById('lista-produtos');
     listaProdutos.innerHTML = '';
 
@@ -62,6 +62,8 @@ function limpar() {
     let valorTotalElemento = document.getElementById('valor-total');
     valorTotalElemento.textContent = 'R$0.00';
 
+    // limpa o campo de selecionar produtos.
+    
     let produtoSelect = document.getElementById('produto');
     produtoSelect.selectedIndex = 0;
     produtoSelect.disabled = true;
