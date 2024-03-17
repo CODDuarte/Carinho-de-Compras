@@ -4,6 +4,8 @@ document.getElementById('valor-total').textContent ='R$0,00';
 
 
 function adicionar() {
+
+   
     // Capturar o valor selecionado no select
     let produtoSelecionado = document.getElementById('produto').value;
     //Separar a string para pegar o valor do produto e o nome.
@@ -16,6 +18,12 @@ function adicionar() {
 let novoProduto = document.createElement('section');
 novoProduto.classList.add('carrinho__produtos__produto');
 
+if (quantidade === '' || isNaN(quantidade) || quantidade <= 0) {
+    alert('Por favor insira uma quantidade válida');
+    return;
+    
+}
+
 
 //Adicionar o produto ao carrinho com a quantidade e o valor total
 novoProduto.innerHTML = `<span class="texto-azul"> ${quantidade}x</span> ${produto} <span class="texto-azul"> R$${valorUnitario}`;
@@ -24,7 +32,10 @@ novoProduto.innerHTML = `<span class="texto-azul"> ${quantidade}x</span> ${produ
 let listaProdutos = document.getElementById('lista-produtos');
 listaProdutos.appendChild(novoProduto);
 
+
+
 //Atualizar o valor total do carrinho
+
 
 
     let preco = quantidade * valorUnitario;
@@ -35,12 +46,7 @@ listaProdutos.appendChild(novoProduto);
     quantidade.focus();
 
 
-    if (quantidade === '' || isNaN(quantidade) || quantidade <= 0) {
-        alert('Por favor insira uma quantidade válida');
-        return;  
-        
-    }
-
+    
     
 
 }
@@ -56,6 +62,9 @@ function limpar() {
     listaProdutos.innerHTML = '';
 
     //Reiniciar o valor total do carrinho
+    totalgeral = 0;
+
+   
     let valorTotalElemento = document.getElementById('valor-total');
     valorTotalElemento.textContent = 'R$0.00';
 
